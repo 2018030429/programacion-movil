@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Spinner</string>
+    <string name="title">My first Spinner</string>
+    <string-array name="countries">
+        <item>CANADA</item>
+        <item>USA</item>
+        <item>MEXICO</item>
+        <item>GUATEMALA</item>
+        <item>BELIZE</item>
+        <item>SALVADOR</item>
+        <item>PUERTO RICO</item>
+        <item>HONDURAS</item>
+        <item>PANAMA</item>
+        <item>COLOMBIA</item>
+        <item>VENEZUELA</item>
+        <item>ECUADOR</item>
+        <item>PERU</item>
+        <item>BRAZIL</item>
+        <item>BOLIVIA</item>
+        <item>URUGUAY</item>
+        <item>PARAGUAY</item>
+        <item>CHILE</item>
+        <item>ARGENTINA</item>
+    </string-array>
+</resources>
