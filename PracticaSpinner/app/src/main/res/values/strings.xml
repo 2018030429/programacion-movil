@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="title">Do you want to close the application?</string>
+    <string name="message">Press OK to close it</string>
+    <string-array name="Currencies">
+        <item>🇺🇸 - USD</item>
+        <item>🇪🇺 - EUR</item>
+        <item>🇨🇦 - CAD</item>
+        <item>🇬🇧 - GBP</item>
+    </string-array>
+</resources>
