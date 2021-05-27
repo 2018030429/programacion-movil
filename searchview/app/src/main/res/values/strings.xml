@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Search View</string>
+    <string-array name="names_array">
+        <item>PEÑA SOLIS DIEGO ARMANDO</item>
+        <item>GARCIA SILVA ADRIAN</item>
+        <item>GARCIA RODRIGUEZ JESUS EFRAIN</item>
+        <item>LIZARRAGA CAMACHO JESUS ARMANDO</item>
+        <item>GARCIA GOMEZ JUAN ANTONIO</item>
+        <item>LIZARRAGA LUNA JUAN FRANCISCO</item>
+        <item>OSUNA HIGUERA ALEJANDRO</item>
+        <item>MARIN GALINDO KIMBERLY VANESSA</item>
+        <item>PERAZA SAINZ ANGEL ADRIAN</item>
+        <item>OCHOA GONZALEZ JOSE DE JESUS</item>
+        <item>CASTILLO LOPEZ ORNAN GABRIEL</item>
+        <item>OSUNA CEBALLOS JESUS ALBERTO</item>
+        <item>SANCHEZ LIZARRAGA JOSE LUIS</item>
+        <item>FRANCO MASCOTE JUAN CARLOS</item>
+        <item>CONTRERAS ALDANA BRAYAN ENRIQUE</item>
+        <item>MORALES CRUZ EMILY RAQUEL</item>
+        <item>GARCÍA LABRADOR MARÍA DE LA LUZ</item>
+        <item>TERAN GARCIA KAREN ALEXIA</item>
+        <item>BETANCOURT MARTINEZ ITZZEL ANAIS</item>
+        <item>VILLANUEVA PALACIOS IAN JACOB</item>
+        <item>CANTABRANA SANCHEZ MARIANO JAIR</item>
+        <item>BELTRÁN PALOMINO PEDRO CÉSAR</item>
+        <item>SARABIA VAZQUEZ TANIA CONCEPCION</item>
+        <item>SANTOS PIMENTEL SERGIO</item>
+        <item>ACOSTA CRUZ NAYSIN ALEJANDRA</item>
+        <item>MORENO VELAZQUEZ MARCOS ONOFRE</item>
+        <item>ROJAS AGUILERA ALEJANDRA</item>
+        <item>PULIDO RAMIREZ JUAN IGNACIO</item>
+        <item>CAMACHO PAEZ SERGIO ESTEBAN</item>
+        <item>JIMÉNEZ VIZCARRA JOSÉ RAMÓN</item>
+    </string-array>
 </resources>
