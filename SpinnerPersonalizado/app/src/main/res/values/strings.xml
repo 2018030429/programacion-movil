@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">SpinnerPersonalizado</string>
+    <string name="app_name">Custom Spinner</string>
+    <string name="itemPhrases"> Phrases category </string>
+    <string name="itemGratitude"> Gratitude </string>
+    <string name="itemLove"> Love </string>
+    <string name="itemNewYear"> New Year </string>
+    <string name="itemSongs"> Songs </string>
+    <string name="msgPhrases"> Display </string>
+    <string name="msgGratitude"> Try to thank </string>
+    <string name="msgLove"> Inspire love with these phrases </string>
+    <string name="msgNewYear"> Celebrate the New Year </string>
+    <string name="msgSongs"> Listen only to the best </string>
+    <string name="msgSelected"> Category has been selected </string>
+    <string name="description"> Select a category </string>
 </resources>
