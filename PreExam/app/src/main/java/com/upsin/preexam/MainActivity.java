@@ -3,6 +3,7 @@ package com.upsin.preexam;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     this._btnIMC.setOnClickListener(v -> {
       if (this.areInputsValid()) {
-        Toast.makeText(this, "Todo Gud", Toast.LENGTH_SHORT).show();
+        Intent iIMC = new Intent(MainActivity.this, IMCActivity.class);
+        this.setUserNameToActivity(iIMC);
+        startActivity(iIMC);
       } else {
         Toast.makeText(this, "The name or age are invalid.", Toast.LENGTH_SHORT).show();
       }
@@ -33,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     this._btnConverter.setOnClickListener(v -> {
       if (this.areInputsValid()) {
-        Toast.makeText(this, "Todo Gud", Toast.LENGTH_SHORT).show();
+        Intent iConverter = new Intent(MainActivity.this, ConvertActivity.class);
+        this.setUserNameToActivity(iConverter);
+        startActivity(iConverter);
       } else {
         Toast.makeText(this, "The name or age are invalid.", Toast.LENGTH_SHORT).show();
       }
@@ -70,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
   private boolean areInputsValid() {
     return this.isNameNotEmpty() && this.isAgeValid();
+  }
+
+  private void setUserNameToActivity(Intent intent) {
+    intent.putExtra("user", this._name.getText().toString().trim());
   }
 
 }
