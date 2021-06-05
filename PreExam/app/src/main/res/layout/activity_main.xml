@@ -16,12 +16,16 @@
         <EditText
             android:id="@+id/inName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Introduce your name"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/inAge"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Introduce your age"
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/btnImc"
