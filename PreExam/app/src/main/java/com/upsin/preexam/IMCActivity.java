@@ -34,13 +34,9 @@ public class IMCActivity extends AppCompatActivity {
       }
     });
 
-    this._btnClean.setOnClickListener(v -> {
-      this.cleanInputs();
-    });
+    this._btnClean.setOnClickListener(v -> this.cleanInputs());
 
-    this._btnBack.setOnClickListener(v -> {
-      finish();
-    });
+    this._btnBack.setOnClickListener(v -> finish());
   }
 
   private void initializeComponents() {
