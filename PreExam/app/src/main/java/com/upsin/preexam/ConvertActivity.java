@@ -14,7 +14,6 @@ public class ConvertActivity extends AppCompatActivity {
   private TextView _txtName;
   private EditText _inGrades;
   private RadioButton _rdToFahrenheit;
-  private RadioButton _rdToCelsius;
   private TextView _txtResultConvert;
   private Button _btnConvert;
   private Button _btnClean;
@@ -31,8 +30,7 @@ public class ConvertActivity extends AppCompatActivity {
       if (this.isGradeValid()) {
         if (this._rdToFahrenheit.isChecked()) {
           this.toFahrenheit();
-        }
-        if (this._rdToCelsius.isChecked()){
+        } else {
           this.toCelsius();
         }
       } else {
@@ -57,8 +55,6 @@ public class ConvertActivity extends AppCompatActivity {
     this._rdToFahrenheit = findViewById(R.id.rdToFahrenheit);
     this._rdToFahrenheit.setSelected(true);
 
-    this._rdToCelsius = findViewById(R.id.rdToCelsius);
-
     this._btnConvert = findViewById(R.id.btnCalculate);
     this._btnClean = findViewById(R.id.btnClean);
     this._btnBack = findViewById(R.id.btnBack);
@@ -70,25 +66,16 @@ public class ConvertActivity extends AppCompatActivity {
   }
 
   private double parseGrades() {
-    System.out.println(
-      Double.parseDouble(this._inGrades.getText().toString())
-    );
     return Double.parseDouble(this._inGrades.getText().toString());
   }
 
   private void toFahrenheit() {
-    System.out.println(
-      "C -> F"
-    );
     double C = this.parseGrades();
     double toFa = ((9/5f) * C) + 32;
     this._txtResultConvert.setText(String.format("%.2f", toFa));
   }
 
   private void toCelsius() {
-    System.out.println(
-      "F -> C"
-    );
     double F = this.parseGrades();
     double toCel = (F - 32) * (5/9f);
     this._txtResultConvert.setText(String.format("%.2f", toCel));
