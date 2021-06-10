@@ -28,10 +28,11 @@ public class ConvertActivity extends AppCompatActivity {
 
     this._btnConvert.setOnClickListener(v -> {
       if (this.isGradeValid()) {
+        Convert convert = new Convert(this.parseGrades());
         if (this._rdToFahrenheit.isChecked()) {
-          this.toFahrenheit();
+          this.setResult(convert.toFahrenheit());
         } else {
-          this.toCelsius();
+          this.setResult(convert.toCelsius());
         }
       } else {
         Toast.makeText(this, "Please introduce a valid grade", Toast.LENGTH_SHORT).show();
@@ -69,16 +70,8 @@ public class ConvertActivity extends AppCompatActivity {
     return Double.parseDouble(this._inGrades.getText().toString());
   }
 
-  private void toFahrenheit() {
-    double C = this.parseGrades();
-    double toFa = ((9/5f) * C) + 32;
-    this._txtResultConvert.setText(String.format("%.2f", toFa));
-  }
-
-  private void toCelsius() {
-    double F = this.parseGrades();
-    double toCel = (F - 32) * (5/9f);
-    this._txtResultConvert.setText(String.format("%.2f", toCel));
+  private void setResult(double grades) {
+    this._txtResultConvert.setText(String.format("%.2f", grades));
   }
 
   private void cleanInputs() {

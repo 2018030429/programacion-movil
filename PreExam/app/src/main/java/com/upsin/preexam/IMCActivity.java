@@ -28,7 +28,8 @@ public class IMCActivity extends AppCompatActivity {
 
     this._btnCalculate.setOnClickListener(v -> {
       if (this.areParamsValid()) {
-        this._txtIMCResult.setText(String.format("%.2f",this.calculateIMC()));
+        IMC imc = new IMC(this.getHeight(), this.getWeight());
+        this._txtIMCResult.setText(String.format("%.2f", imc.calculateIMC()));
       } else {
         Toast.makeText(this, "One or some params are invalid", Toast.LENGTH_SHORT).show();
       }
@@ -73,12 +74,6 @@ public class IMCActivity extends AppCompatActivity {
 
   private double getWeight() {
     return Double.parseDouble(this._inWeight.getText().toString());
-  }
-
-  private double calculateIMC() {
-    double height = this.getHeight();
-    double weight = this.getWeight();
-    return weight / (height * height);
   }
 
   private void cleanInputs() {
