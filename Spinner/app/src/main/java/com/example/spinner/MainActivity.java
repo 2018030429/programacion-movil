@@ -55,12 +55,9 @@ public class MainActivity extends AppCompatActivity {
     });
     */
 
-    lstCountries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String country = parent.getItemAtPosition(position).toString();
-        lblCountry.setText(country);
-      }
+    lstCountries.setOnItemClickListener((parent, view, position, id) -> {
+      String country = parent.getItemAtPosition(position).toString();
+      lblCountry.setText(country);
     });
 
   }
