@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">Baby</string>
+    <string-array name="babyItemsHeader">
+        <item>Capa</item>
+        <item>Babero</item>
+        <item>Pijama</item>
+        <item>Pijama</item>
+        <item>Pijama</item>
+        <item>Pijama</item>
+        <item>Pijama</item>
+        <item>Calcetas</item>
+        <item>traje</item>
+        <item>Joggers</item>
+        <item>Gorro</item>
+        <item>Mameluco</item>
+        <item>Pijama</item>
+        <item>Gorro</item>
+        <item>Mameluco</item>
+        <item>Traje</item>
+        <item>Traje</item>
+        <item>Traje</item>
+        <item>Sandalias</item>
+        <item>Tennis</item>
+        <item>Lentes</item>
+        <item>Sandalias</item>
+        <item>Chanclas</item>
+        <item>Mameluco</item>
+        <item>Mameluco</item>
+    </string-array>
+    <string-array name="babyItemsDescription">
+        <item>Capa azul marino</item>
+        <item>Babero Super Bowl</item>
+        <item>Pijama de dinosaurios blanca</item>
+        <item>Pijama de dinosaurios azul</item>
+        <item>Pijama 4 de julio</item>
+        <item>Pijama de gatitos</item>
+        <item>Pijama 4 de julio</item>
+        <item>Calcetas de colores</item>
+        <item>Traje de cowboy</item>
+        <item>Joggers azules</item>
+        <item>Gorro blanco y gris</item>
+        <item>Mameluco Pride</item>
+        <item>Pijama Halloween</item>
+        <item>Gorro de osito</item>
+        <item>Mameluco Super Bowl</item>
+        <item>Traje NYC</item>
+        <item>Traje MLB</item>
+        <item>Traje de cumpleaños</item>
+        <item>Sandalias azules</item>
+        <item>Tennis celestes</item>
+        <item>Lentes de sol color naranja</item>
+        <item>Sandalias Vintage</item>
+        <item>Chanclas Pride</item>
+        <item>Mameluco Howard</item>
+        <item>Mameluco temático</item>
+    </string-array>
 </resources>
