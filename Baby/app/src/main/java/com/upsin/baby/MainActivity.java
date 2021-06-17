@@ -3,7 +3,11 @@ package com.upsin.baby;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
   private ListView listItems;
   private ArrayList<String> babyItemHeaders;
   private ArrayList<String> babyItemDescription;
+  private SearchView searchView;
+  private ListAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
   private void initializeComponents() {
     ArrayList<Item> list = new ArrayList<>();
     ArrayList<Integer> imageList = new ArrayList<>();
+    this.searchView = findViewById(R.id.menu_search);
 
     this.babyItemHeaders = new ArrayList<String>();
     this.babyItemDescription = new ArrayList<String>();
@@ -58,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     listItems = findViewById(R.id.lstItem);
-    ListAdapter adapter = new ListAdapter(
-      this,
+    this.adapter = new ListAdapter(
+      MainActivity.this,
       R.layout.list_layout,
       R.id.lblHeader,
       list
@@ -69,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
   }
 
-  public ArrayList<Integer> getArrayImages() {
+  private ArrayList<Integer> getArrayImages() {
     ArrayList<Integer> List = new ArrayList<>();
     List.add(R.drawable.babyitem_1);
     List.add(R.drawable.babyitem_2);
@@ -99,8 +106,29 @@ public class MainActivity extends AppCompatActivity {
     return List;
   }
 
-  private void setColorItem(ListView list) {
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
 
+    MenuInflater menuInflater = getMenuInflater();
+    menuInflater.inflate(R.menu.menu_search, menu);
+
+    MenuItem menuItem = menu.findItem(R.id.menu_search);
+    SearchView search = (SearchView) menuItem.getActionView();
+
+    search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+      @Override
+      public boolean onQueryTextSubmit(String query) {
+        return false;
+      }
+
+      @Override
+      public boolean onQueryTextChange(String newText) {
+        MainActivity.this.adapter.filter(newText);
+        MainActivity.this.adapter.notifyDataSetChanged();
+        return false;
+      }
+    });
+
+    return super.onCreateOptionsMenu(menu);
   }
-
 }

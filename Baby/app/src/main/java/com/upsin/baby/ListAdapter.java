@@ -16,7 +16,8 @@ public class ListAdapter extends ArrayAdapter<Item> {
 
   private final int groupId;
   private Activity context;
-  private final ArrayList<Item> list;
+  private ArrayList<Item> list;
+  private ArrayList<Item> initialData;
   private final LayoutInflater inflater;
 
   public ListAdapter(Activity _context, int _groupId, int _id, ArrayList<Item> _list) {
@@ -24,10 +25,12 @@ public class ListAdapter extends ArrayAdapter<Item> {
     this.list = _list;
     this.inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.groupId = _groupId;
+    this.setInitialData(this.list);
   }
 
   public View getView(int position, View convertView, ViewGroup parent) {
     View view = inflater.inflate(groupId, parent, false);
+
     ImageView image = view.findViewById(R.id.imgItem);
     image.setImageResource(list.get(position).getImage());
 
@@ -67,6 +70,25 @@ public class ListAdapter extends ArrayAdapter<Item> {
     }
 
     return view;
+  }
+
+  private void setInitialData(ArrayList<Item> _list) {
+    this.initialData = new ArrayList<>();
+    this.initialData.addAll(_list);
+  }
+
+  public void filter(String search) {
+    this.list.clear();
+
+    if (search.isEmpty()) {
+      this.list.addAll(this.initialData);
+    }
+
+    for (Item item : this.initialData) {
+      if (item.getHeader().contains(search)) {
+        this.list.add(item);
+      }
+    }
   }
 
 }
