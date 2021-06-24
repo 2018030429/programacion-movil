@@ -1,18 +1,8 @@
 <resources>
     <string name="app_name">CustomAdapterDemo</string>
-    <string-array name="namesArray">
-        <item>Jose</item>
-        <item>Maria</item>
-        <item>Luis</item>
-        <item>Frank</item>
-        <item>Esteban</item>
-        <item>George</item>
-        <item>Jesus</item>
-        <item>Manuel</item>
-        <item>Janet</item>
-        <item>Veronica</item>
-        <item>April</item>
-        <item>Sofia</item>
-        <item>Alessandro</item>
-    </string-array>
+    <string name="title">Students List</string>
+    <string name="imageHolder">Students Photo</string>
+    <string name="career">Ing. En Tec. Info.</string>
+    <string name="studentName">Enrique Contreras Aldana</string>
+    <string name="enrollment">2018030429</string>
 </resources>

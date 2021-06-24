@@ -14,30 +14,28 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
   private RecyclerView _recyclerView;
-  private final ArrayList<String> _listData = new ArrayList<String>();
+  private RecyclerView.LayoutManager _layoutManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    MyApplication app = (MyApplication) getApplication();
     this._recyclerView = findViewById(R.id.recyclerId);
-    this._recyclerView.setLayoutManager(
-      // new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-      new GridLayoutManager(this, 2)
-    );
+    this._recyclerView.setAdapter(app.getAdapter());
 
-    this._listData.addAll(Arrays.asList(getResources().getStringArray(R.array.namesArray)));
-    MyAdapter adapter = new MyAdapter(this._listData);
+    this._layoutManager = new LinearLayoutManager(this);
+    this._recyclerView.setLayoutManager(_layoutManager);
 
-    adapter.setOnClickListener(v -> {
+    app.getAdapter().setOnClickListener(v -> {
       int position = this._recyclerView.getChildAdapterPosition(v);
-      String item = this._listData.get(position);
+      String studentName = app.getStudents().get(position).get_name();
       Toast.makeText(
-        MainActivity.this, "You Clicked on "+ item, Toast.LENGTH_SHORT
+        MainActivity.this,
+        "You clicked on " + studentName,
+        Toast.LENGTH_SHORT
       ).show();
     });
-
-    this._recyclerView.setAdapter(adapter);
   }
 }

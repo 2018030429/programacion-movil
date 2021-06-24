@@ -1,8 +1,10 @@
 package com.upsin.customadapterdemo;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,30 +16,38 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements View.OnClickListener {
 
-  private final ArrayList<String> _ListData;
+  protected ArrayList<Student> _studentsList;
   private View.OnClickListener _listener;
+  private Context _context;
+  private final LayoutInflater _inflater;
 
-  public MyAdapter(ArrayList<String> ListData) {
-    this._ListData = ListData;
+
+  public MyAdapter(ArrayList<Student> studentList, Context context) {
+    this._studentsList = studentList;
+    this._context = context;
+    this._inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
   }
 
   @NonNull
   @NotNull
   @Override
   public MyAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items, null, false);
+    View view = this._inflater.inflate(R.layout.student_item, null);
     view.setOnClickListener(this); // Listens to click event
     return new ViewHolder(view);
   }
 
   @Override
   public void onBindViewHolder(@NonNull @NotNull MyAdapter.ViewHolder holder, int position) {
-    holder.setTxtData(this._ListData.get(position));
+    Student student = this._studentsList.get(position);
+    holder._txtEnrollment.setText(student.get_enrollment());
+    holder._txtName.setText(student.get_name());
+    holder._idImg.setImageResource(student.get_img());
   }
 
   @Override
   public int getItemCount() {
-    return this._ListData.size();
+    return this._studentsList.size();
   }
 
   public void setOnClickListener(View.OnClickListener listener) {
@@ -51,15 +61,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView txtData;
+    private LayoutInflater _inflater;
+    private TextView _txtName;
+    private TextView _txtEnrollment;
+    private TextView _txtCareer;
+    private ImageView _idImg;
 
     public ViewHolder(@NonNull @NotNull View itemView) {
       super(itemView);
-      this.txtData = itemView.findViewById(R.id.txtName);
+      this._txtName = itemView.findViewById(R.id.txtStudentName);
+      this._txtCareer = itemView.findViewById(R.id.txtCareer);
+      this._txtEnrollment = itemView.findViewById(R.id.txtEnrollment);
+      this._idImg = itemView.findViewById(R.id.photo);
     }
 
-    public void setTxtData(String str) {
-      this.txtData.setText(str);
-    }
   }
 }
