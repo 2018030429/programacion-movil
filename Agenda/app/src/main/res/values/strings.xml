@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="favorite">Call Favorite</string>
+    <string name="phone1">Main *</string>
+    <string name="phone2">Secondary</string>
+    <string name="btn_clean">Clean</string>
+    <string name="btn_toList">To List</string>
+    <string name="btn_save">Save</string>
+    <string name="notes">Notes</string>
+    <string name="address">Address *</string>
+    <string name="name">Name *</string>
+    <string name="newContact">New</string>
+    <string name="text">Elements</string>
+    <string name="action">Action</string>
+    <string name="message">Contact saved!</string>
+    <string name="action_show">Show</string>
+    <string name="contact_g">Contact_G</string>
+    <string name="contact_g_index">Contact_G_index</string>
+    <string name="ErrorMessage">Fill all the inputs marked with (*)</string>
 </resources>
