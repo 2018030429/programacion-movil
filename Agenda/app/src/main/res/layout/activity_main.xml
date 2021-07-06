@@ -1,18 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".MainActivity">
+    
+    <TableLayout
+      android:id="@+id/table"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:stretchColumns="*"
+      tools:context="${relativePackage}.${activityClass}">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+          android:id="@+id/txtView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_span="2"
+          android:text="@string/name" />
+
+        <EditText
+          android:id="@+id/edtName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_span="2"
+          android:inputType="textPersonName">
+            <requestFocus />
+        </EditText>
+
+        <TableRow>
+            <TextView
+              android:id="@+id/txtView3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/phone1" />
+            <TextView
+              android:id="@+id/txtView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/phone2" />
+        </TableRow>
+
+        <TableRow>
+            <EditText
+              android:id="@+id/edtPhone1"
+              android:layout_width="144dp"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:inputType="phone" />
+            <EditText
+              android:id="@+id/edtPhone2"
+              android:layout_width="144dp"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:inputType="phone" />
+        </TableRow>
+
+        <TextView
+          android:id="@+id/txtView2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_span="2"
+          android:text="@string/address" />
+        <EditText
+          android:id="@+id/edtAddress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="textPostalAddress" />
+        <TextView
+          android:id="@+id/txtView5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_span="2"
+          android:text="@string/notes" />
+        <EditText
+          android:id="@+id/edtNotes"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.97"
+          android:ems="10"
+          android:inputType="textMultiLine" />
+        <CheckBox
+          android:id="@+id/cbFavorite"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/favorite" />
+
+        <TableRow>
+            <Button
+              android:id="@+id/btnClean"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/btn_clean" />
+            <Button
+              android:id="@+id/btnSave"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/btn_save" />
+        </TableRow>
+
+        <Button
+          android:id="@+id/btnToList"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/btn_toList" />
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
