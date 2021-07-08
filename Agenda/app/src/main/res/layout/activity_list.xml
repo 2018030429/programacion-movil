@@ -15,7 +15,7 @@
 
     <ScrollView
       android:layout_width="wrap_content"
-      android:layout_height="match_parent">
+      android:layout_height="wrap_content">
 
       <TableLayout
         android:id="@+id/tableList"
@@ -31,15 +31,15 @@
             android:id="@+id/txtView01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:text="@string/name" />
+            android:text="@string/name"
+            android:textSize="8pt" />
 
           <TextView
             android:id="@+id/txtView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="8pt"
-            android:text="@string/action" />
+            android:text="@string/action"
+            android:textSize="8pt" />
 
         </TableRow>
 
@@ -51,7 +51,7 @@
       android:id="@+id/btnNew"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="20px"
+      android:layout_marginTop="20dp"
       android:text="@string/newContact" />
 
   </LinearLayout>
