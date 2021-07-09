@@ -1,9 +1,15 @@
 package com.upsin.customadapterdemo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,7 +17,7 @@ import android.widget.Toast;
 
 public class StudentRegistration extends AppCompatActivity {
 
-  private Button _btnSave, _btnBack;
+  private Button _btnSave, _btnBack, _btnDelete;
   private Student _student;
   private EditText _txtName, _txtEnrollment, _txtCareer;
   private ImageView _studentImg;
@@ -72,11 +78,40 @@ public class StudentRegistration extends AppCompatActivity {
       finish();
     });
 
+    this._btnDelete.setOnClickListener(v -> {
+      if (this._position >= 0) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Remove Student");
+        dialog.setMessage("Ara you sure to delete this student?");
+        dialog.setNegativeButton("Cancel", null);
+        dialog.setPositiveButton("Delete", (d,w) -> {
+          MyApplication.getStudents().remove(_position);
+          Toast.makeText(
+            getApplicationContext(), "Student deleted successfully", Toast.LENGTH_SHORT
+          ).show();
+          finish();
+        });
+        AlertDialog dlg = dialog.create();
+        dlg.show();
+      } else {
+        Toast.makeText(
+          getApplicationContext(), "This is not possible now", Toast.LENGTH_SHORT
+        ).show();
+      }
+    });
+
+    this._btnImage.setOnClickListener(v -> {
+      Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+      intent.setType("image/");
+      startActivityForResult(intent.createChooser(intent, "choose app"), 10);
+    });
+
   }
 
   private void initializeComponents() {
     this._btnSave = findViewById(R.id.btnSave);
     this._btnBack = findViewById(R.id.btnBack);
+    this._btnDelete = findViewById(R.id.btnDelete);
     this._txtEnrollment = findViewById(R.id.txtEnrollment);
     this._txtName = findViewById(R.id.txtName);
     this._txtCareer = findViewById(R.id.txtCareer);
@@ -111,4 +146,13 @@ public class StudentRegistration extends AppCompatActivity {
     return editText.getText().toString().isEmpty();
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (resultCode == RESULT_OK) {
+      Uri path = data.getData();
+      this._studentImg.setImageURI(path);
+    }
+  }
 }

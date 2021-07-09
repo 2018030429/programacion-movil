@@ -13,4 +13,5 @@
   <string name="chosePhoto">Chose a photo</string>
   <string name="save">Save</string>
   <string name="back">Back</string>
+  <string name="btnDelete">Delete</string>
 </resources>
