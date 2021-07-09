@@ -1,8 +1,16 @@
 <resources>
-    <string name="app_name">CustomAdapterDemo</string>
-    <string name="title">Students List</string>
-    <string name="imageHolder">Students Photo</string>
-    <string name="career">Ing. En Tec. Info.</string>
-    <string name="studentName">Enrique Contreras Aldana</string>
-    <string name="enrollment">2018030429</string>
+  <string name="app_name">CustomAdapterDemo</string>
+  <string name="title">Students List</string>
+  <string name="imageHolder">Students Photo</string>
+  <string name="career">Ing. En Tec. Info.</string>
+  <string name="studentName">Enrique Contreras Aldana</string>
+  <string name="enrollment">2018030429</string>
+  <string name="student_s_name">Students name</string>
+  <string name="editTextName">Last names, First name</string>
+  <string name="ediTextEnrollment">Enrollment</string>
+  <string name="editTextCareer">Licenciatura o Ing.</string>
+  <string name="actions">Actions</string>
+  <string name="chosePhoto">Chose a photo</string>
+  <string name="save">Save</string>
+  <string name="back">Back</string>
 </resources>

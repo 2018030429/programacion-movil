@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
-  private ArrayList<Student> _studentList;
+  private static ArrayList<Student> _studentList;
   private MyAdapter _adapter;
 
-  public ArrayList<Student> getStudents() {
-    return this._studentList;
+  public static ArrayList<Student> getStudents() {
+    return _studentList;
   }
 
   public MyAdapter getAdapter() {

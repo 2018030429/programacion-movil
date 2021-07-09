@@ -43,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     holder._txtEnrollment.setText(student.get_enrollment());
     holder._txtName.setText(student.get_name());
     holder._idImg.setImageResource(student.get_img());
+    holder._txtCareer.setText(student.get_career());
   }
 
   @Override
@@ -62,10 +63,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
   public static class ViewHolder extends RecyclerView.ViewHolder {
 
     private LayoutInflater _inflater;
-    private TextView _txtName;
-    private TextView _txtEnrollment;
-    private TextView _txtCareer;
-    private ImageView _idImg;
+    private final TextView _txtName;
+    private final TextView _txtEnrollment;
+    private final TextView _txtCareer;
+    private final ImageView _idImg;
 
     public ViewHolder(@NonNull @NotNull View itemView) {
       super(itemView);
