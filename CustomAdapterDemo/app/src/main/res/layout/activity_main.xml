@@ -40,11 +40,10 @@
           android:layout_gravity="bottom|end"
           android:layout_margin="20dp"
           android:backgroundTint="@color/white"
-          app:elevation="-3dp"
+          app:elevation="3dp"
           app:borderWidth="2dp"
           android:src="@drawable/add"
-          android:id="@+id/addNewStudent"
-          android:contentDescription="add Student Button">
+          android:id="@+id/addNewStudent">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
