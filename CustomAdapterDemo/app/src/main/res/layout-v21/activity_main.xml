@@ -38,6 +38,7 @@
           android:layout_margin="20dp"
           android:backgroundTint="@color/white"
           app:elevation="3dp"
+          android:src="@drawable/ic_baseline_add_circle_24"
           app:borderWidth="2dp"
           android:id="@+id/addNewStudent">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>

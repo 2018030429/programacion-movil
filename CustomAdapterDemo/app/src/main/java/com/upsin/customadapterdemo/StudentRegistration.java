@@ -44,7 +44,9 @@ public class StudentRegistration extends AppCompatActivity {
       if (this._student == null) {
         this._student = new Student();
         this.setBasicInfo();
-        this._student.set_img(R.drawable.profile);
+        this._student.set_img(
+          Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString()
+        );
 
         if (this.areInputsEmpty()) {
           Toast.makeText(
@@ -127,7 +129,7 @@ public class StudentRegistration extends AppCompatActivity {
     this._txtEnrollment.setText(this._student.get_enrollment());
     this._txtName.setText(this._student.get_name());
     this._txtCareer.setText(this._student.get_career());
-    this._studentImg.setImageResource(this._student.get_img());
+    this._studentImg.setImageURI(Uri.parse(this._student.get_img()));
   }
 
   private void setBasicInfo() {

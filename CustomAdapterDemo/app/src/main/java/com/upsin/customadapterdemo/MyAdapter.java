@@ -1,6 +1,7 @@
 package com.upsin.customadapterdemo;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     Student student = this._studentsList.get(position);
     holder._txtEnrollment.setText(student.get_enrollment());
     holder._txtName.setText(student.get_name());
-    holder._idImg.setImageResource(student.get_img());
+    holder._idImg.setImageURI(Uri.parse(student.get_img()));
     holder._txtCareer.setText(student.get_career());
   }
 

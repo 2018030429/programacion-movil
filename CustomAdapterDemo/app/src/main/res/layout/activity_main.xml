@@ -39,10 +39,10 @@
           android:layout_height="wrap_content"
           android:layout_gravity="bottom|end"
           android:layout_margin="20dp"
-          android:backgroundTint="@color/white"
+          android:backgroundTint="@color/purple_700"
           app:elevation="3dp"
           app:borderWidth="2dp"
-          android:src="@drawable/add"
+          android:src="@drawable/ic_baseline_add_circle_24"
           android:id="@+id/addNewStudent">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
