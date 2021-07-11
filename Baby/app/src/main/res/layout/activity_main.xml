@@ -40,7 +40,7 @@
           android:elevation="5dp"
           app:borderWidth="2dp"
           android:src="@drawable/ic_baseline_add_24"
-          android:id="@+id/agregarProducto" />
+          android:id="@+id/btnNewProduct" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
