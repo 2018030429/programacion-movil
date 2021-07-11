@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class StudentRegistration extends AppCompatActivity {
   private String _career = "Ing. En Tec. Info.";
   private Button _btnImage;
   private int _position;
+  private Uri selectedImgUri;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,11 @@ public class StudentRegistration extends AppCompatActivity {
       if (this._student == null) {
         this._student = new Student();
         this.setBasicInfo();
+        /*
         this._student.set_img(
           Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString()
         );
+         */
 
         if (this.areInputsEmpty()) {
           Toast.makeText(
@@ -67,10 +71,12 @@ public class StudentRegistration extends AppCompatActivity {
         MyApplication.getStudents().get(this._position).set_enrollment(this._student.get_enrollment());
         MyApplication.getStudents().get(this._position).set_name(this._student.get_name());
         MyApplication.getStudents().get(this._position).set_career(this._student.get_career());
+        MyApplication.getStudents().get(this._position).set_img(this._student.get_img());
 
         Toast.makeText(
           getApplicationContext(), "Modified successfully", Toast.LENGTH_SHORT
         ).show();
+        finish();
       }
 
     });
@@ -103,9 +109,17 @@ public class StudentRegistration extends AppCompatActivity {
     });
 
     this._btnImage.setOnClickListener(v -> {
+      Intent intent = new Intent();
+      intent.setType("image/*");
+      intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+      intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+      intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+      startActivityForResult(Intent.createChooser(intent, "Chose app"), 0);
+      /*
       Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
       intent.setType("image/");
       startActivityForResult(intent.createChooser(intent, "choose app"), 10);
+       */
     });
 
   }
@@ -136,6 +150,7 @@ public class StudentRegistration extends AppCompatActivity {
     this._student.set_career(this._txtCareer.getText().toString());
     this._student.set_enrollment(this._txtEnrollment.getText().toString());
     this._student.set_name(this._txtName.getText().toString());
+    this._student.set_img(this.getProfileImg());
   }
 
   private boolean areInputsEmpty() {
@@ -148,13 +163,29 @@ public class StudentRegistration extends AppCompatActivity {
     return editText.getText().toString().isEmpty();
   }
 
+  private String getProfileImg() {
+    return (this.selectedImgUri == null)
+      ? Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString()
+      : this.selectedImgUri.toString();
+  }
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
+    if (resultCode != RESULT_CANCELED) {
+      this.selectedImgUri = data.getData();
+      Log.d("", "onActivityResult: " + selectedImgUri);
+      if (selectedImgUri != null) {
+        this._studentImg.setImageURI(selectedImgUri);
+      }
+    }
+
+    /* TODO: _____________________
     if (resultCode == RESULT_OK) {
       Uri path = data.getData();
       this._studentImg.setImageURI(path);
     }
+     */
   }
 }
