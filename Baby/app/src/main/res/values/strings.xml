@@ -18,4 +18,11 @@
   <string name="defaultTitle">Default Title</string>
   <string name="defaultDescription">Default Description</string>
   <string name="baby_clothes">Baby Clothes</string>
+  <string name="productHintName">Product name</string>
+  <string name="productHintDescription">Product Description</string>
+  <string name="productLabelSrc">Source</string>
+  <string name="productFormBtnChose">chose photo</string>
+  <string name="productFormBtnSave">save</string>
+  <string name="productFormBtnDelete">Delete</string>
+  <string name="productFormBtnBack">Back</string>
 </resources>
