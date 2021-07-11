@@ -1,6 +1,7 @@
 package com.upsin.baby;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
   @Override
   public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
     Item currentItem = this._itemList.get(position);
-    holder._image.setImageResource(currentItem.getImage());
+    holder._image.setImageURI(Uri.parse(currentItem.getImage()));
     holder._txtHeader.setText(currentItem.getHeader());
     holder._txtDescription.setText(currentItem.getDescription());
     holder.relativeLayout.setBackgroundColor(this._mapColors.get(position));
@@ -114,7 +115,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
     this._mapColors.put(25, Color.parseColor("#FBE4FF"));
   }
 
-  private Filter itemFilter = new Filter() {
+  private final Filter itemFilter = new Filter() {
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
       List<Item> filteredList = new ArrayList<>();
