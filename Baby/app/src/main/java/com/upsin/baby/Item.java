@@ -2,9 +2,10 @@ package com.upsin.baby;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item {
+public class Item implements Serializable {
 
   private String _image;
   private String _header;
