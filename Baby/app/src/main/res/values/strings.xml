@@ -1,21 +1,21 @@
 <resources>
-    <string name="app_name">Baby</string>
-    <string-array name="babyItemsHeader">
+  <string name="app_name">Baby</string>
+  <string-array name="babyItemsHeader">
 
-        <item>Sandalias</item>
-        <item>Chanclas</item>
-        <item>Mameluco</item>
-        <item>Mameluco</item>
-    </string-array>
-    <string-array name="babyItemsDescription">
+    <item>Sandalias</item>
+    <item>Chanclas</item>
+    <item>Mameluco</item>
+    <item>Mameluco</item>
+  </string-array>
+  <string-array name="babyItemsDescription">
 
-        <item>Sandalias Vintage</item>
-        <item>Chanclas Pride</item>
-        <item>Mameluco Howard</item>
-        <item>Mameluco temático</item>
-    </string-array>
-    <string name="imageHolder">Baby Item</string>
-    <string name="defaultTitle">Default Title</string>
-    <string name="defaultDescription">Default Description</string>
-    <string name="baby_clothes">Baby Clothes</string>
+    <item>Sandalias Vintage</item>
+    <item>Chanclas Pride</item>
+    <item>Mameluco Howard</item>
+    <item>Mameluco temático</item>
+  </string-array>
+  <string name="imageHolder">Baby Item</string>
+  <string name="defaultTitle">Default Title</string>
+  <string name="defaultDescription">Default Description</string>
+  <string name="baby_clothes">Baby Clothes</string>
 </resources>
