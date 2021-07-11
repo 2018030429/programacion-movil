@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> implements Filterable, View.OnClickListener {
 
@@ -61,10 +62,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
   @Override
   public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
     Item currentItem = this._itemList.get(position);
+    int indexMap = new Random().nextInt(25 ) + 1;
     holder._image.setImageURI(Uri.parse(currentItem.getImage()));
     holder._txtHeader.setText(currentItem.getHeader());
     holder._txtDescription.setText(currentItem.getDescription());
-    holder.relativeLayout.setBackgroundColor(this._mapColors.get(position));
+    holder.relativeLayout.setBackgroundColor(this._mapColors.get(indexMap));
   }
 
   @Override
