@@ -25,4 +25,5 @@
   <string name="productFormBtnSave">save</string>
   <string name="productFormBtnDelete">Delete</string>
   <string name="productFormBtnBack">Back</string>
+  <string name="productFormPrice">Price: $</string>
 </resources>

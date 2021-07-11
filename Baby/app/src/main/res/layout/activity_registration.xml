@@ -30,6 +30,16 @@
       android:layout_marginBottom="10dp"
       android:textSize="15sp" />
 
+    <EditText
+      android:id="@+id/txtFormPrice"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/productFormPrice"
+      android:inputType="numberDecimal"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:textSize="20sp" />
+
     <ImageView
       android:id="@+id/ImgViewForm"
       android:layout_width="200dp"
