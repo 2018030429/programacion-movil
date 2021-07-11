@@ -28,4 +28,19 @@
 
     </LinearLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom|end"
+          android:layout_margin="20dp"
+          android:backgroundTint="@color/cardview_light_background"
+          android:elevation="5dp"
+          app:borderWidth="2dp"
+          android:src="@drawable/ic_baseline_add_24"
+          android:id="@+id/agregarProducto" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
