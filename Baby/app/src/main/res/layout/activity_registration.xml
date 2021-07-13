@@ -45,7 +45,8 @@
       android:layout_width="200dp"
       android:layout_height="200dp"
       android:layout_gravity="center"
-      android:src="@drawable/ic_baseline_child_friendly_24" />
+      android:src="@drawable/ic_baseline_child_friendly_24"
+      android:contentDescription="@string/imageDescription" />
 
     <TextView
       android:id="@+id/lblFormSrc"

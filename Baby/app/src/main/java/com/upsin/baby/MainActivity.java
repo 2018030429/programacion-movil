@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     app.get_adapter().setOnClickListener(v -> {
       this._position = this._recyclerView.getChildAdapterPosition(v);
-      this._holderItem = app.get_itemList().get(this._position);
+      this._holderItem = app.getItemList().get(this._position);
       this.createActivityForResult(1);
     });
   }

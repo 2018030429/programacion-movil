@@ -1,19 +1,5 @@
 <resources>
   <string name="app_name">Baby</string>
-  <string-array name="babyItemsHeader">
-
-    <item>Sandalias</item>
-    <item>Chanclas</item>
-    <item>Mameluco</item>
-    <item>Mameluco</item>
-  </string-array>
-  <string-array name="babyItemsDescription">
-
-    <item>Sandalias Vintage</item>
-    <item>Chanclas Pride</item>
-    <item>Mameluco Howard</item>
-    <item>Mameluco temático</item>
-  </string-array>
   <string name="imageHolder">Baby Item</string>
   <string name="defaultTitle">Default Title</string>
   <string name="defaultDescription">Default Description</string>
@@ -26,4 +12,6 @@
   <string name="productFormBtnDelete">Delete</string>
   <string name="productFormBtnBack">Back</string>
   <string name="productFormPrice">Price: $</string>
+  <string name="defaultPrice">15.99 USD</string>
+  <string name="imageDescription">Baby clothe</string>
 </resources>

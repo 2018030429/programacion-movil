@@ -24,23 +24,25 @@ import java.util.Random;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> implements Filterable, View.OnClickListener {
 
-  private List<Item> _itemList;
-  private List<Item> _itemListFull;
+  private final List<Item> _itemList;
+  private final List<Item> _itemListFull;
   private View.OnClickListener _listener;
-  private Map<Integer, Integer> _mapColors = new HashMap<>();
+  private final Map<Integer, Integer> _mapColors = new HashMap<>();
 
-  public class ItemViewHolder extends RecyclerView.ViewHolder {
+  public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
-    private ImageView _image;
-    private TextView _txtHeader;
-    private TextView _txtDescription;
-    private RelativeLayout relativeLayout;
+    private final ImageView _image;
+    private final TextView _txtHeader;
+    private final TextView _txtDescription;
+    private final TextView _txtPrice;
+    private final RelativeLayout relativeLayout;
 
     ItemViewHolder(View itemView) {
       super(itemView);
       this._image = itemView.findViewById(R.id.itemImage);
       this._txtHeader = itemView.findViewById(R.id.txtItemHeader);
       this._txtDescription = itemView.findViewById(R.id.txtItemDescription);
+      this._txtPrice = itemView.findViewById(R.id.txtItemPrice);
       this.relativeLayout = itemView.findViewById(R.id.container);
     }
   }
@@ -66,6 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
     holder._image.setImageURI(Uri.parse(currentItem.getImage()));
     holder._txtHeader.setText(currentItem.getHeader());
     holder._txtDescription.setText(currentItem.getDescription());
+    holder._txtPrice.setText(currentItem.getPrice()+" USD");
     holder.relativeLayout.setBackgroundColor(this._mapColors.get(indexMap));
   }
 

@@ -56,7 +56,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:text="@string/defaultTitle"
                     android:textStyle="bold" />
 
@@ -67,8 +67,16 @@
                     android:layout_marginBottom="2dp"
                     android:text="@string/defaultDescription"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <TextView
+                  android:id="@+id/txtItemPrice"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:textColor="@color/black"
+                  android:text="@string/defaultPrice"
+                  android:textSize="15sp"/>
 
             </LinearLayout>
 

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
-  private ArrayList<Item> _itemList;
+  private static ArrayList<Item> _itemList;
   private MyAdapter _adapter;
 
-  public ArrayList<Item> get_itemList() {
+  public static ArrayList<Item> getItemList() {
     return _itemList;
   }
 
