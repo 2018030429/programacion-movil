@@ -23,7 +23,7 @@ public class StudentDBHelper extends SQLiteOpenHelper {
   private static final int DATABASE_VERSION = 1;
 
   public StudentDBHelper(Context context) {
-    super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    super(context, DATABASE_NAME, null, DATABASE_VERSION);
   }
 
   @Override
