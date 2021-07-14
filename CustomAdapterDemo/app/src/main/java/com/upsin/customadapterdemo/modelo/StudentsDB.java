@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class StudentsDB implements Persistence, Projection {
 
-  private Context _context;
-  private StudentDBHelper _helper;
+  private final Context _context;
+  private final StudentDBHelper _helper;
   private SQLiteDatabase _db;
 
   public StudentsDB(Context context, StudentDBHelper helper) {
@@ -39,27 +39,18 @@ public class StudentsDB implements Persistence, Projection {
   @Override
   public long insertStudent(Student student) {
     ContentValues values = new ContentValues();
-
-    values.put(TableDefine.Students.COLUMN_NAME_ENROLLMENT, student.get_enrollment());
-    values.put(TableDefine.Students.COLUMN_NAME_NAME, student.get_name());
-    values.put(TableDefine.Students.COLUMN_NAME_CAREER, student.get_career());
-    values.put(TableDefine.Students.COLUMN_NAME_PHOTO, student.get_img());
+    this.putStudentValues(values, student);
 
     this.openDataBase();
     long response = this._db.insert(TableDefine.Students.TABLE_NAME, null, values);
     this.closeDataBase();
-    Log.d("RECORD", "insertStudent" + response);
     return response;
   }
 
   @Override
   public long updateStudent(Student student) {
     ContentValues values = new ContentValues();
-
-    values.put(TableDefine.Students.COLUMN_NAME_ENROLLMENT, student.get_enrollment());
-    values.put(TableDefine.Students.COLUMN_NAME_NAME, student.get_name());
-    values.put(TableDefine.Students.COLUMN_NAME_CAREER, student.get_career());
-    values.put(TableDefine.Students.COLUMN_NAME_PHOTO, student.get_img());
+    this.putStudentValues(values, student);
 
     this.openDataBase();
     long response = this._db.update(
@@ -68,12 +59,11 @@ public class StudentsDB implements Persistence, Projection {
       TableDefine.Students.COLUMN_NAME_ID + "=" + student.get_id(),
       null);
     this.closeDataBase();
-    Log.d("RECORD", "updateStudent" + response);
     return response;
   }
 
   @Override
-  public void deleteStudent(int id) {
+  public void deleteStudent(long id) {
     this.openDataBase();
     this._db.delete(
       TableDefine.Students.TABLE_NAME,
@@ -93,8 +83,7 @@ public class StudentsDB implements Persistence, Projection {
       new String[] { enrollment },
       null, null, null
     );
-    Student student = this.readStudent(cursor);
-    return student;
+    return this.readStudent(cursor);
   }
 
   @Override
@@ -128,5 +117,12 @@ public class StudentsDB implements Persistence, Projection {
     student.set_career(cursor.getString(3));
     student.set_img(cursor.getString(4));
     return student;
+  }
+
+  private void putStudentValues(ContentValues values, Student student) {
+    values.put(TableDefine.Students.COLUMN_NAME_ENROLLMENT, student.get_enrollment());
+    values.put(TableDefine.Students.COLUMN_NAME_NAME, student.get_name());
+    values.put(TableDefine.Students.COLUMN_NAME_CAREER, student.get_career());
+    values.put(TableDefine.Students.COLUMN_NAME_PHOTO, student.get_img());
   }
 }
