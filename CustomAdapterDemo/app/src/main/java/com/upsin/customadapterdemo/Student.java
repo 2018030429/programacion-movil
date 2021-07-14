@@ -7,28 +7,27 @@ import java.util.ArrayList;
 
 public class Student implements Serializable {
 
-  private int _id;
+  private long _id;
   private String _career;
   private String _name;
   private String _img;
   private String _enrollment;
 
   public Student(String name, String img, String enrollment, String career) {
+    this._id = 0;
     this._name = name;
     this._img = img;
     this._career = career;
     this._enrollment = enrollment;
   }
 
-  public Student() {
+  public Student() {}
 
-  }
-
-  public int get_id() {
+  public long get_id() {
     return _id;
   }
 
-  public void set_id(int _id) {
+  public void set_id(long _id) {
     this._id = _id;
   }
 
