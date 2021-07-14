@@ -8,6 +8,6 @@ public interface Persistence {
   public void closeDataBase();
   public long insertStudent(Student student);
   public long updateStudent(Student student);
-  public int deleteStudent(int id);
+  public void deleteStudent(int id);
 
 }
