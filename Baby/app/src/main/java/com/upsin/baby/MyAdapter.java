@@ -68,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
     holder._image.setImageURI(Uri.parse(currentItem.getImage()));
     holder._txtHeader.setText(currentItem.getHeader());
     holder._txtDescription.setText(currentItem.getDescription());
-    holder._txtPrice.setText(currentItem.getPrice()+" USD");
+    holder._txtPrice.setText(String.format("%.2f USD", currentItem.getPrice()));
     holder.relativeLayout.setBackgroundColor(this._mapColors.get(indexMap));
   }
 
