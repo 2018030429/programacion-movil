@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -106,14 +107,13 @@ public class RegistrationActivity extends AppCompatActivity {
       if (this.areInputsEmpty()) {
         this.createToast("There are empty values");
         this._txtFormName.requestFocus();
-        this._itemHolder = null;
       } else {
         this.setInfoProduct();
         MyApplication.getItemList().add(this._itemHolder);
         setResult(Activity.RESULT_OK);
         finish();
       }
-
+      this._itemHolder = null;
     }
 
     if (this._position >= 0) {
@@ -141,15 +141,15 @@ public class RegistrationActivity extends AppCompatActivity {
   private void setInfoProduct() {
     this._itemHolder.setHeader(this._txtFormName.getText().toString());
     this._itemHolder.setDescription(this._txtFormDescription.getText().toString());
-    this._itemHolder.setPrice(Float.parseFloat(this._txtFormPrice.getText().toString()));
+    this._itemHolder.setPrice(Double.parseDouble(this._txtFormPrice.getText().toString()));
     this._itemHolder.setImage(this.getProductImg());
   }
 
   private String getProductImg() {
     return (this._chosenUri == null)
       ? Uri.parse(
-          "android.resource://com.upsin.baby/"+R.drawable.ic_baseline_child_friendly_24
-        ).toString()
+        "android.resource://com.upsin.baby/"+R.drawable.ic_baseline_child_friendly_24
+      ).toString()
       : this._chosenUri.toString();
   }
 
