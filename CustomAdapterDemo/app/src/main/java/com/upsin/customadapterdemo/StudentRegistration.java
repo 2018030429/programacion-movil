@@ -14,23 +14,29 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.upsin.customadapterdemo.modelo.StudentsDB;
 
 public class StudentRegistration extends AppCompatActivity {
 
   private Button _btnSave, _btnBack, _btnDelete;
   private Student _student;
   private EditText _txtName, _txtEnrollment, _txtCareer;
+  private TextView _txtViewId;
   private ImageView _studentImg;
-  private String _career = "Ing. En Tec. Info.";
   private Button _btnImage;
   private int _position;
   private Uri selectedImgUri;
+  private StudentsDB _studentDB;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_student_registration);
+
+    this._studentDB = new StudentsDB(getApplicationContext());
 
     this.initializeComponents();
 
@@ -39,18 +45,9 @@ public class StudentRegistration extends AppCompatActivity {
     }
 
     this._btnSave.setOnClickListener(v -> {
-
-      System.out.println(this._position);
-      System.out.println(this._student == null);
-
       if (this._student == null) {
         this._student = new Student();
         this.setBasicInfo();
-        /*
-        this._student.set_img(
-          Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString()
-        );
-         */
 
         if (this.areInputsEmpty()) {
           Toast.makeText(
@@ -59,6 +56,8 @@ public class StudentRegistration extends AppCompatActivity {
           this._txtEnrollment.requestFocus();
           this._student = null;
         } else {
+          long index = this._studentDB.insertStudent(this._student);
+          this._student.set_id(index);
           MyApplication.getStudents().add(this._student);
           setResult(Activity.RESULT_OK);
           finish();
@@ -67,6 +66,8 @@ public class StudentRegistration extends AppCompatActivity {
 
       if (this._position >= 0) {
         this.setBasicInfo();
+
+        this._studentDB.updateStudent(this._student);
 
         MyApplication.getStudents().get(this._position).set_enrollment(this._student.get_enrollment());
         MyApplication.getStudents().get(this._position).set_name(this._student.get_name());
@@ -78,7 +79,6 @@ public class StudentRegistration extends AppCompatActivity {
         ).show();
         finish();
       }
-
     });
 
     this._btnBack.setOnClickListener(v -> {
@@ -94,6 +94,7 @@ public class StudentRegistration extends AppCompatActivity {
         dialog.setNegativeButton("Cancel", null);
         dialog.setPositiveButton("Delete", (d,w) -> {
           MyApplication.getStudents().remove(_position);
+          this._studentDB.deleteStudent(this._student.get_id());
           Toast.makeText(
             getApplicationContext(), "Student deleted successfully", Toast.LENGTH_SHORT
           ).show();
@@ -115,13 +116,7 @@ public class StudentRegistration extends AppCompatActivity {
       intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
       intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
       startActivityForResult(Intent.createChooser(intent, "Chose app"), 0);
-      /*
-      Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-      intent.setType("image/");
-      startActivityForResult(intent.createChooser(intent, "choose app"), 10);
-       */
     });
-
   }
 
   private void initializeComponents() {
@@ -133,6 +128,7 @@ public class StudentRegistration extends AppCompatActivity {
     this._txtCareer = findViewById(R.id.txtCareer);
     this._studentImg = findViewById(R.id.imageStudent);
     this._btnImage = findViewById(R.id.btnChoseImage);
+    this._txtViewId = findViewById(R.id.txtViewId);
 
     Bundle bundleObject = getIntent().getExtras();
     this._student = (Student) bundleObject.getSerializable("student");
@@ -140,6 +136,7 @@ public class StudentRegistration extends AppCompatActivity {
   }
 
   private void fillStudent() {
+    this._txtViewId.setText(String.valueOf(this._student.get_id()));
     this._txtEnrollment.setText(this._student.get_enrollment());
     this._txtName.setText(this._student.get_name());
     this._txtCareer.setText(this._student.get_career());
@@ -164,9 +161,10 @@ public class StudentRegistration extends AppCompatActivity {
   }
 
   private String getProfileImg() {
-    return (this.selectedImgUri == null)
-      ? Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString()
-      : this.selectedImgUri.toString();
+    if (this.selectedImgUri == null && this._student.get_img() == null)
+      return Uri.parse("android.resource://com.upsin.customadapterdemo/"+R.drawable.profile).toString();
+    if (this.selectedImgUri == null) return this._student.get_img();
+    return this.selectedImgUri.toString();
   }
 
   @Override
@@ -175,17 +173,9 @@ public class StudentRegistration extends AppCompatActivity {
 
     if (resultCode != RESULT_CANCELED) {
       this.selectedImgUri = data.getData();
-      Log.d("", "onActivityResult: " + selectedImgUri);
       if (selectedImgUri != null) {
         this._studentImg.setImageURI(selectedImgUri);
       }
     }
-
-    /* TODO: _____________________
-    if (resultCode == RESULT_OK) {
-      Uri path = data.getData();
-      this._studentImg.setImageURI(path);
-    }
-     */
   }
 }
