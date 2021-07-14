@@ -36,7 +36,14 @@
       android:layout_height="wrap_content"
       android:hint="@string/productFormPrice"
       android:inputType="numberDecimal"
+      android:layout_marginBottom="10dp"
+      android:textSize="20sp" />
 
+    <EditText
+      android:id="@+id/txtFormInvoice"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/productFormInvoice"
       android:layout_marginBottom="10dp"
       android:textSize="20sp" />
 

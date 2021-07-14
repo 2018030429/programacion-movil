@@ -16,9 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.upsin.baby.model.ItemsDB;
+
 public class RegistrationActivity extends AppCompatActivity {
 
-  private EditText _txtFormName, _txtFormDescription, _txtFormPrice;
+  private EditText _txtFormName, _txtFormDescription, _txtFormPrice, _txtFormInvoice;
   private Button _btnSave, _btnBack, _btnDelete, _btnChosePhoto;
   private ImageView _ImgViewForm;
   private TextView _txtFormSrc;
@@ -27,11 +29,15 @@ public class RegistrationActivity extends AppCompatActivity {
   private int _position;
   private Uri _chosenUri;
 
+  private ItemsDB _itemsDB;
+
   @Override
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_registration);
+
+    this._itemsDB = new ItemsDB(getApplicationContext());
 
     this.initializeComponents();
 
@@ -65,6 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
     this._btnChosePhoto = findViewById(R.id.btnFormPhoto);
     this._ImgViewForm = findViewById(R.id.ImgViewForm);
     this._txtFormSrc = findViewById(R.id.lblFormSrc);
+    this._txtFormInvoice = findViewById(R.id.txtFormInvoice);
 
     Bundle bundle = getIntent().getExtras();
     this._itemHolder = (Item) bundle.getSerializable("item");
@@ -76,6 +83,7 @@ public class RegistrationActivity extends AppCompatActivity {
     this._txtFormDescription.setText(this._itemHolder.getDescription());
     this._txtFormPrice.setText(String.valueOf(this._itemHolder.getPrice()));
     this._ImgViewForm.setImageURI(Uri.parse(this._itemHolder.getImage()));
+    this._txtFormInvoice.setText(this._itemHolder.getInvoice());
   }
 
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -93,6 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
     builder.setNegativeButton("Cancel", null);
     builder.setPositiveButton("Delete", (d,w) -> {
       MyApplication.getItemList().remove(this._position);
+      this._itemsDB.deleteItem(this._itemHolder.getId());
       this.createToast("Product deleted successfully");
       finish();
     });
@@ -109,6 +118,8 @@ public class RegistrationActivity extends AppCompatActivity {
         this._txtFormName.requestFocus();
       } else {
         this.setInfoProduct();
+        long index = this._itemsDB.insertItem(this._itemHolder);
+        this._itemHolder.setId(index);
         MyApplication.getItemList().add(this._itemHolder);
         setResult(Activity.RESULT_OK);
         finish();
@@ -118,6 +129,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     if (this._position >= 0) {
       this.setInfoProduct();
+
+      this._itemsDB.updateItem(this._itemHolder);
 
       MyApplication.getItemList().get(this._position).setHeader(this._itemHolder.getHeader());
       MyApplication.getItemList().get(this._position).setDescription(this._itemHolder.getDescription());
@@ -143,14 +156,22 @@ public class RegistrationActivity extends AppCompatActivity {
     this._itemHolder.setDescription(this._txtFormDescription.getText().toString());
     this._itemHolder.setPrice(Double.parseDouble(this._txtFormPrice.getText().toString()));
     this._itemHolder.setImage(this.getProductImg());
+    this._itemHolder.setInvoice(this._txtFormInvoice.getText().toString());
   }
 
   private String getProductImg() {
+    if (this._chosenUri == null && this._itemHolder.getImage() == null)
+      return Uri.parse("android.resource://com.upsin.baby/"+
+        R.drawable.ic_baseline_child_friendly_24).toString();
+    if (this._chosenUri == null) return this._itemHolder.getImage();
+    return this._chosenUri.toString();
+    /*
     return (this._chosenUri == null)
       ? Uri.parse(
         "android.resource://com.upsin.baby/"+R.drawable.ic_baseline_child_friendly_24
       ).toString()
       : this._chosenUri.toString();
+     */
   }
 
   private void createToast(String message) {

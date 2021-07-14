@@ -7,23 +7,31 @@ import java.util.ArrayList;
 
 public class Item implements Serializable {
 
+  private long _id;
   private String _image;
   private String _header;
   private String _description;
+  private String _invoice;
   private double _price;
 
-  public Item(String image, String header, String description, double price) {
+  public Item(String image, String header, String description, String invoice, double price) {
     this._image = image;
     this._header = header;
     this._description = description;
+    this._invoice = invoice;
     this._price = price;
   }
 
   public Item() {
+    this._id = 0;
     this._image = "";
     this._header = "";
     this._description = "";
     this._price = 0.0;
+  }
+
+  public long getId() {
+    return this._id;
   }
 
   public String getImage() {
@@ -38,6 +46,18 @@ public class Item implements Serializable {
     return _header;
   }
 
+  public double getPrice() {
+    return _price;
+  }
+
+  public String getInvoice() {
+    return this._invoice;
+  }
+
+  public void setId(long _id) {
+    this._id = _id;
+  }
+
   public void setImage(String _image) {
     this._image = _image;
   }
@@ -50,12 +70,12 @@ public class Item implements Serializable {
     this._header = _header;
   }
 
-  public double getPrice() {
-    return _price;
-  }
-
   public void setPrice(double _price) {
     this._price = _price;
+  }
+
+  public void setInvoice(String _invoice) {
+    this._invoice = _invoice;
   }
 
   public static ArrayList<Item> getAllItems() {
@@ -63,103 +83,103 @@ public class Item implements Serializable {
 
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_1).toString(),
-      "Capa", "Capa azul marino", 10.99
+      "Capa", "Capa azul marino", "", 10.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_2).toString(),
-      "Babero", "Babero Super Bowl", 5.99
+      "Babero", "Babero Super Bowl", "", 5.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_3).toString(),
-      "Pijama", "Pijama de dinosaurios blanca", 14.99
+      "Pijama", "Pijama de dinosaurios blanca", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_4).toString(),
-      "Pijama", "Pijama de dinosaurios azul", 14.99
+      "Pijama", "Pijama de dinosaurios azul", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_5).toString(),
-      "Pijama", "Pijama 4 de julio", 15.99
+      "Pijama", "Pijama 4 de julio", "", 15.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_6).toString(),
-      "Pijama", "Pijama de gatitos", 14.99
+      "Pijama", "Pijama de gatitos", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_7).toString(),
-      "Pijama", "Pijama 4 de julio", 15.99
+      "Pijama", "Pijama 4 de julio", "", 15.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_8).toString(),
-      "Calcetas", "Calcetas de colores", 3.5
+      "Calcetas", "Calcetas de colores", "", 3.5
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_9).toString(),
-      "Traje", "Traje de vaquero", 19.99
+      "Traje", "Traje de vaquero", "", 19.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_10).toString(),
-      "Joggers", "Joggers azules", 14.99
+      "Joggers", "Joggers azules", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_11).toString(),
-      "Gorro", "Gorro blanco y gris", 4.99
+      "Gorro", "Gorro blanco y gris", "", 4.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_12).toString(),
-      "Mameluco", "Mameluco Pride", 6.99
+      "Mameluco", "Mameluco Pride", "", 6.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_13).toString(),
-      "Pijama", "Pijama Halloween", 14.99
+      "Pijama", "Pijama Halloween", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_14).toString(),
-      "Gorro", "Gorro de osito", 4.99
+      "Gorro", "Gorro de osito", "", 4.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_15).toString(),
-      "Mameluco", "Mameluco Super Bowl", 6.99
+      "Mameluco", "Mameluco Super Bowl", "", 6.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_16).toString(),
-      "Traje", "Traje NYC", 19.99
+      "Traje", "Traje NYC", "", 19.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_17).toString(),
-      "Traje", "Traje MLB", 19.99
+      "Traje", "Traje MLB", "", 19.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_18).toString(),
-      "Traje", "Traje de cumpleaños", 19.99
+      "Traje", "Traje de cumpleaños", "", 19.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_19).toString(),
-      "Sandalias", "Sandalias azules", 5.99
+      "Sandalias", "Sandalias azules", "", 5.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_20).toString(),
-      "Tennis", "Tennis celestes", 14.99
+      "Tennis", "Tennis celestes", "", 14.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_21).toString(),
-      "Lentes", "Lentes de sol color naranja", 12.5
+      "Lentes", "Lentes de sol color naranja", "", 12.5
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_22).toString(),
-      "Sandalias", "Sandalias Vintage", 9.99
+      "Sandalias", "Sandalias Vintage", "", 9.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_23).toString(),
-      "Chanclas", "Chanclas Pride", 9.99
+      "Chanclas", "Chanclas Pride", "", 9.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_24).toString(),
-      "Mameluco", "Mameluco Howard", 6.99
+      "Mameluco", "Mameluco Howard", "", 6.99
     ));
     itemList.add(new Item(
       Uri.parse("android.resource://com.upsin.baby/"+R.drawable.babyitem_25).toString(),
-      "Mameluco", "Mameluco temático", 7.99
+      "Mameluco", "Mameluco temático", "", 7.99
     ));
 
     return itemList;
